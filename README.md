@@ -72,3 +72,17 @@ If you ever need a quick, temporary public URL **without** configuring a custom 
 ```bash
 cloudflared tunnel --url http://localhost:3000
 ```
+
+---
+
+## Managing Your Tunnel
+
+### Stopping a Running Tunnel
+If your tunnel is actively running in the foreground of your terminal, simply press `Ctrl + C` to stop it. 
+
+### Deleting a Tunnel
+To permanently delete a tunnel and remove its associated UUID and credentials, run the following:
+```bash
+cloudflared tunnel delete my-app-tunnel
+```
+*Note: You may also want to manually remove the `~/.cloudflared/<UUID>.json` file if it was not automatically removed.*

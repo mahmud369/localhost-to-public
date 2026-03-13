@@ -42,7 +42,11 @@ cloudflared tunnel route dns my-app-tunnel api.yourdomain.com
 ```
 
 ## Step 5: Configure the Ingress Rules
-Create a configuration file at `~/.cloudflared/config.yml` to define where incoming web traffic should go:
+Create a configuration file at `~/.cloudflared/config.yml` to define where incoming web traffic should go.
+
+> **Tip: Locating your `config.yml`**
+> - On **Linux/macOS**, this file is usually located in the `~/.cloudflared/` directory. You can open and edit it using `nano ~/.cloudflared/config.yml` or your preferred text editor.
+> - On **Windows**, it is typically located in `%USERPROFILE%\.cloudflared\`.
 
 ```yaml
 tunnel: my-app-tunnel

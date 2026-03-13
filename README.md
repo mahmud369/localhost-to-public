@@ -9,12 +9,17 @@ A concise guide to securely exposing a local development project to the internet
 ---
 
 ## Step 1: Install `cloudflared` CLI
-Download and install the Cloudflare daemon. For Linux (Debian/Ubuntu):
+Download and install the Cloudflare daemon from the [official downloads page](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/). For Linux (Debian/Ubuntu):
 ```bash
 curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
 sudo dpkg -i cloudflared.deb
 ```
 *(macOS users can use: `brew install cloudflare/cloudflare/cloudflared`)*
+
+Verify the installation by checking the version:
+```bash
+cloudflared --version
+```
 
 ## Step 2: Login to Cloudflare
 Authenticate the CLI with your Cloudflare account.
@@ -58,8 +63,8 @@ cloudflared tunnel run my-app-tunnel
 
 ---
 
-### Alternative: Quick Testing (Random URL)
-If you ever need a quick, temporary public URL **without** configuring a custom domain, you can skip steps 2-6 and simply run:
+### Create Temporary Public URL
+If you ever need a quick, temporary public URL **without** configuring a custom domain, you can skip steps 2-6 and simply run the following command (assuming your app is on port `3000`):
 ```bash
 cloudflared tunnel --url http://localhost:3000
 ```

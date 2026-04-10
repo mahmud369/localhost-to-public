@@ -86,3 +86,31 @@ To permanently delete a tunnel and remove its associated UUID and credentials, r
 cloudflared tunnel delete my-app-tunnel
 ```
 *Note: You may also want to manually remove the `~/.cloudflared/<UUID>.json` file if it was not automatically removed.*
+
+### Running as a Background Service (`systemctl`)
+If you want your tunnel to start automatically on boot and run continuously as a background daemon on Linux, you can install it as a service:
+
+1. First, copy your configuration over to the system-wide directory:
+```bash
+sudo mkdir -p /etc/cloudflared/
+sudo cp ~/.cloudflared/config.yml /etc/cloudflared/config.yml
+sudo cp ~/.cloudflared/<UUID>.json /etc/cloudflared/
+```
+2. Install the service:
+```bash
+sudo cloudflared service install
+```
+3. Start the service:
+```bash
+sudo systemctl start cloudflared
+```
+4. Verify it is running:
+```bash
+sudo systemctl status cloudflared
+```
+
+### Debugging the Background Service
+If the tunnel service fails to start or drops connections, you can check the logs using `journalctl`:
+```bash
+journalctl -xeu cloudflared.service
+```
